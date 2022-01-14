@@ -5,7 +5,6 @@ This is Dwaipayan here. I have created this app as part of **MongoDB Atlas Hacka
 Being involved in academic research, I have found that maintaining a bibliography becomes a real pain.
 https://citation.crosscite.org/ has been a reliable companion ever since. So given the chance, I thought of an idea where we can leverage this wonderful resource along with maintaining a solid bibliography for the current project we get to work on.
 This is a very initial draft and I wish to continue contributing to this project going forward.
-In case anyone is interested about my research, following is the link
 
 **My ORCID Profile** (*in case anyone is interested about my research*): https://orcid.org/0000-0002-1149-5745 
 
