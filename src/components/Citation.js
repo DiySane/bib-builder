@@ -1,7 +1,32 @@
+import { useState } from "react";
 import "../styles.css";
 // import { connectToMongo } from "../utils/DataBase";
 
-export default function Citation() {
+export default function Citation(currentProject) {
+  const [currentCitation, setCurrentCitation] = useState("");
+
+  const onCitationChange = (e) => {
+    setCurrentCitation(e.target.value);
+  };
+
+  const createNewCitation = async (url) => {
+    try {
+      const result = await axios.post(url, {
+        citation: currentCitation,
+        projectId: currentProject,
+      });
+      const { status, data } = result;
+      if (status !== 200) {
+        return [];
+      }
+      // setExistingProjects(data);
+      setCurrentProject(name);
+      // return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="CitationContainer">
       <iframe
@@ -10,12 +35,12 @@ export default function Citation() {
         src="https://citation.crosscite.org/"
         title="description"
       ></iframe>
-      <div className="columnSpacer"></div>
+      <div className="ColumnSpacer"></div>
       <div className="SaveCitationContainer">
         <h3
           // className="CitationTextLabel"
           style={{
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           Copy to clipboard doesn't work right now! &#128577;
@@ -26,11 +51,16 @@ export default function Citation() {
         <label htmlFor="citationText" className="CitationTextLabel">
           So please paste your citation copying from left:
         </label>
-        <input className="CitationText" type="text" id="citationText"></input>
+        <input
+          className="CitationText"
+          type="text"
+          id="citationText"
+          onChange={onCitationChange}
+        ></input>
         <button
           id="saveCitation"
           className="SaveCitationBtn"
-          onClick={connectDb}
+          onClick={createNewCitation("http://localhost:5000/citation")}
         >
           Save
         </button>
@@ -38,11 +68,3 @@ export default function Citation() {
     </div>
   );
 }
-
-const connectDb = async () => {
-  // await connectToMongo();
-  // connect()
-  // .then(console.log)
-  // .catch(console.error)
-  // .finally(() => client.close());
-};

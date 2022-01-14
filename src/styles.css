@@ -103,6 +103,10 @@
   cursor: pointer;
 }
 
-.columnSpacer {
+.ColumnSpacer {
   width: 5vw;
+}
+
+.RowSpacer {
+  height: 5vh;
 }
